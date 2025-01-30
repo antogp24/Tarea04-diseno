@@ -191,7 +191,7 @@ public class Main {
         System.out.print("Ingrese su correo electrónico: ");
         String correo = scanner.nextLine();
         
-        List<Reservacion> reservaciones = reservacionManager.obtenerReservaciones(correo);
+        List<Component> reservaciones = reservacionManager.obtenerReservaciones(correo);
         
         if (reservaciones.isEmpty()) {
             System.out.println("\nNo tiene reservaciones registradas.");
@@ -201,7 +201,7 @@ public class Main {
         System.out.println("\nSus reservaciones:");
         System.out.println("------------------");
         
-        for (Reservacion reservacion : reservaciones) {
+        for (Component reservacion : reservaciones) {
             if (reservacion instanceof ReservacionHotel hotel) {
                 System.out.printf("Hotel - Tipo: %s, Estado: %s, Precio: $%.2f%n", 
                     hotel.getTipoHabitacion(), hotel.getEstado(), hotel.getPrecio());

@@ -1,5 +1,5 @@
 package composite;
 
-public interface Adicional {
-    void confirmar();
+public interface Adicional extends Component{
+    void addBenefit();
 }

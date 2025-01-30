@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PaqueteTuristico implements Reservacion {
-    private List<Reservacion> paquete;
+public class PaqueteTuristico implements Component {
+    private List<Component> paquete;
     private List<Adicional> adicionales;
     private String nombre;
     private double precioTotal;
@@ -17,12 +17,12 @@ public class PaqueteTuristico implements Reservacion {
         this.precioTotal = 0.0;
     }
 
-    public void agregarComponente(Reservacion reservacion) {
+    public void agregarComponente(Component reservacion) {
         paquete.add(reservacion);
         calcularPrecioTotal();
     }
 
-    public void quitarComponente(Reservacion reservacion) {
+    public void quitarComponente(Component reservacion) {
         paquete.remove(reservacion);
         calcularPrecioTotal();
     }
@@ -34,7 +34,7 @@ public class PaqueteTuristico implements Reservacion {
 
     @Override
     public void confirmar() {
-        for (Reservacion r : paquete) {
+        for (Component r : paquete) {
             r.confirmar();
         }
         for (Adicional a : adicionales) {
@@ -44,7 +44,7 @@ public class PaqueteTuristico implements Reservacion {
 
     @Override
     public void cancelar() {
-        for (Reservacion r : paquete) {
+        for (Component r : paquete) {
             r.cancelar();
         }
     }
@@ -53,7 +53,6 @@ public class PaqueteTuristico implements Reservacion {
         // Implementar cálculo del precio total
     }
 
-    @Override
     public double getPrecio() {
         return precioTotal;
     }

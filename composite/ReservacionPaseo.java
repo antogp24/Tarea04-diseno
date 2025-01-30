@@ -2,7 +2,7 @@ package composite;
 
 import observer.NotificadorManager;
 
-public class ReservacionPaseo implements Reservacion {
+public class ReservacionPaseo implements Component {
     protected String tipo;
     protected String estado;
     protected String correoUsuario;
@@ -34,7 +34,6 @@ public class ReservacionPaseo implements Reservacion {
         this.correoUsuario = correoUsuario;
     }
 
-    @Override
     public double getPrecio() {
         return precio;
     }

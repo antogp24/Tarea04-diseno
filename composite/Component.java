@@ -1,6 +1,6 @@
 package composite;
 
-public interface Reservacion {
+public interface Component {
     void confirmar();
     void cancelar();
     double getPrecio();

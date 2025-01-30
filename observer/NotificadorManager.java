@@ -1,7 +1,7 @@
 package observer;
 
 import model.Notification;
-import composite.Reservacion;
+import composite.Component;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +42,7 @@ public class NotificadorManager implements Subject {
         }
     }
 
-    public void enviarNotificacion(Reservacion reservacion) {
+    public void enviarNotificacion(Component reservacion) {
         String mensaje = "Su reservación ha sido confirmada";
         notificarObservadores(mensaje);
     }

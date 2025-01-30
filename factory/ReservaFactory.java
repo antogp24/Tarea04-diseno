@@ -1,11 +1,11 @@
 package factory;
 
-import composite.Reservacion;
+import composite.Component;
 
 public interface ReservaFactory {
-    Reservacion reservarAventura();
-    Reservacion reservarEstandar();
-    Reservacion reservarFamiliar();
-    Reservacion reservarSuite();
-    Reservacion reservarCultural();
+    Component reservarAventura();
+    Component reservarEstandar();
+    Component reservarFamiliar();
+    Component reservarSuite();
+    Component reservarCultural();
 }

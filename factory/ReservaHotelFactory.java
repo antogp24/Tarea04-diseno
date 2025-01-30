@@ -1,6 +1,6 @@
 package factory;
 
-import composite.Reservacion;
+import composite.Component;
 import model.ReservacionCultural;
 import model.ReservacionEstandar;
 import model.ReservacionFamiliar;
@@ -9,27 +9,27 @@ import model.ReservacionSuite;
 public class ReservaHotelFactory implements ReservaFactory {
 
     @Override
-    public Reservacion reservarAventura() {
+    public Component reservarAventura() {
         return new ReservacionEstandar();
     }
 
     @Override
-    public Reservacion reservarEstandar() {
+    public Component reservarEstandar() {
         return new ReservacionEstandar();
     }
 
     @Override
-    public Reservacion reservarFamiliar() {
+    public Component reservarFamiliar() {
         return new ReservacionFamiliar();
     }
 
     @Override
-    public Reservacion reservarSuite() {
+    public Component reservarSuite() {
         return new ReservacionSuite();
     }
 
     @Override
-    public Reservacion reservarCultural() {
+    public Component reservarCultural() {
         return new ReservacionCultural();
     }
 }

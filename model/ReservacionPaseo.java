@@ -1,9 +1,9 @@
 package model;
 
-import composite.Reservacion;
+import composite.Component;
 import observer.NotificadorManager;
 
-public class ReservacionPaseo implements Reservacion {
+public class ReservacionPaseo implements Component {
     protected String tipo;
     protected String estado;
     protected String correoUsuario;

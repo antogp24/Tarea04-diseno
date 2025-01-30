@@ -2,7 +2,7 @@ package composite;
 
 import observer.NotificadorManager;
 
-public class ReservacionHotel implements Reservacion {
+public class ReservacionHotel implements Component {
     protected int numCamas;
     protected String estado;  // disponible, reservada, ocupada, mantenimiento
     protected String correoUsuario;

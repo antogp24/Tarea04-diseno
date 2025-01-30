@@ -1,32 +1,32 @@
 package factory;
 
-import composite.Reservacion;
+import composite.Component;
 import model.*;
 
 public class ReservaPaseoFactory implements ReservaFactory {
 
     @Override
-    public Reservacion reservarAventura() {
+    public Component reservarAventura() {
         return new PaseoAventura();
     }
 
     @Override
-    public Reservacion reservarEstandar() {
+    public Component reservarEstandar() {
         return new PaseoEstandar();
     }
 
     @Override
-    public Reservacion reservarFamiliar() {
+    public Component reservarFamiliar() {
         return new PaseoFamiliar();
     }
 
     @Override
-    public Reservacion reservarSuite() {
+    public Component reservarSuite() {
         return new PaseoSuite();
     }
 
     @Override
-    public Reservacion reservarCultural() {
+    public Component reservarCultural() {
         return new PaseoCultural();
     }
 }

@@ -1,8 +1,8 @@
 package model;
 
-import composite.Reservacion;
+import composite.Component;
 
-public class PaseoCultural implements Reservacion {
+public class PaseoCultural implements Component {
 
     @Override
     public void cancelar() {
@@ -14,7 +14,6 @@ public class PaseoCultural implements Reservacion {
         // ...
     }
 
-    @Override
     public double getPrecio() {
         return 100;
     }

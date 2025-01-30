@@ -1,8 +1,8 @@
 package model;
 
-import composite.Reservacion;
+import composite.Component;
 
-public class PaseoAventura implements Reservacion {
+public class PaseoAventura implements Component {
     private String tipo = "aventura";
     private double precio = 120.0;
 
@@ -16,7 +16,6 @@ public class PaseoAventura implements Reservacion {
         // Implementación
     }
 
-    @Override
     public double getPrecio() {
         return precio;
     }

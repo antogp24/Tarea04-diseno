@@ -10,8 +10,17 @@ public class Descuento implements Adicional {
     }
 
     @Override
+    public void addBenefit() {
+        //Lógica para agregar beneficios
+    }
+    @Override
     public void confirmar() {
         this.aplicado = true;
+    }
+
+    @Override
+    public void cancelar() {
+        this.aplicado = false;
     }
 
     public double getPorcentaje() {
@@ -20,5 +29,10 @@ public class Descuento implements Adicional {
 
     public boolean isAplicado() {
         return aplicado;
+    }
+
+    @Override
+    public double getPrecio(){
+        return 0;
     }
 }
