@@ -7,17 +7,35 @@ public class Reservaciones {
     private static ReservacionManager reservacionManager = ReservacionManager.getInstance();
 
     public static ReservacionHotel reservarHotel(Scanner scanner) {
-        System.out.println("\nTipos de habitación disponibles:");
-        System.out.println("1. Estándar ($100)");
-        System.out.println("2. Suite ($200)");
-        System.out.println("3. Familiar ($150)");
+        mostrarTiposHabitacion();
         
         int opcion = Util.nextNumber(scanner, "Seleccione tipo de habitación: ", 1, 3);
         
         System.out.print("Ingrese su correo electrónico: ");
         String correo = scanner.nextLine();
         
-        ReservacionHotel reservacion = null;
+        ReservacionHotel reservacion = crearReservacionHotel(opcion, correo);
+        
+        if (reservacion != null) {
+            reservacion.confirmar();
+            Inventario.getInstance().disminuirDisponible(reservacion.getTipoHabitacion(), "hotel");
+            reservacionManager.agregarReservacion(correo, reservacion);
+            System.out.println("Reservación confirmada exitosamente");
+        } else {
+            System.out.println("No hay disponibilidad para este tipo de habitación");
+        }
+        
+        return reservacion;
+    }
+
+    private static void mostrarTiposHabitacion() {
+        System.out.println("\nTipos de habitación disponibles:");
+        System.out.println("1. Estándar ($100)");
+        System.out.println("2. Suite ($200)");
+        System.out.println("3. Familiar ($150)");
+    }
+
+    private static ReservacionHotel crearReservacionHotel(int opcion, String correo) {
         String tipo = "";
         double precio = 0;
         
@@ -40,15 +58,10 @@ public class Reservaciones {
         }
         
         if (Inventario.getInstance().verificarDisponibilidad(tipo, "hotel")) {
-            reservacion = new ReservacionHotel(tipo, 2, precio);
+            ReservacionHotel reservacion = new ReservacionHotel(tipo, 2, precio);
             reservacion.setCorreoUsuario(correo);
-            reservacion.confirmar();
-            Inventario.getInstance().disminuirDisponible(tipo, "hotel");
-            reservacionManager.agregarReservacion(correo, reservacion);
-            System.out.println("Reservación confirmada exitosamente");
             return reservacion;
         } else {
-            System.out.println("No hay disponibilidad para este tipo de habitación");
             return null;
         }
     }
