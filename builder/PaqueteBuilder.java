@@ -9,4 +9,6 @@ public interface PaqueteBuilder {
     void agregarDescuento(double porcentaje);
     void agregarServicioAdicional(ServicioAdicional servicio);
     PaqueteTuristico build();
+    void construirBasico(ReservacionHotel hotel, ReservacionPaseo paseo);
+    void construirPremium(ReservacionHotel hotel, ReservacionPaseo paseo);
 } 
