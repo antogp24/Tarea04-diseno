@@ -7,29 +7,34 @@ import java.util.List;
 public class PaqueteTuristico implements Component {
     private List<Component> paquete;
     private List<Adicional> adicionales;
-    private String nombre;
-    private double precioTotal;
+    private Info info;
+
+    public static class Info {
+        private String nombre;
+        private double precioTotal;
+
+        public Info(String nombre, double precioTotal) {
+            this.nombre = nombre;
+            this.precioTotal = precioTotal;
+        }
+    }
 
     public PaqueteTuristico(String nombre) {
-        this.nombre = nombre;
         this.paquete = new ArrayList<>();
         this.adicionales = new ArrayList<>();
-        this.precioTotal = 0.0;
+        this.info = new Info(nombre, 0.0);
     }
 
     public void agregarComponente(Component reservacion) {
         paquete.add(reservacion);
-        calcularPrecioTotal();
     }
 
     public void quitarComponente(Component reservacion) {
         paquete.remove(reservacion);
-        calcularPrecioTotal();
     }
 
     public void agregarAdicional(Adicional adicional) {
         adicionales.add(adicional);
-        calcularPrecioTotal();
     }
 
     @Override
@@ -49,11 +54,7 @@ public class PaqueteTuristico implements Component {
         }
     }
 
-    private void calcularPrecioTotal() {
-        // Implementar cálculo del precio total
-    }
-
     public double getPrecio() {
-        return precioTotal;
+        return info.precioTotal;
     }
 }
