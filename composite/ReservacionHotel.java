@@ -3,15 +3,15 @@ package composite;
 import observer.NotificadorManager;
 
 public class ReservacionHotel implements Component {
-    protected int numCamas;
+    protected int cantidadDeCamas;
     protected String estado;  // disponible, reservada, ocupada, mantenimiento
     protected String correoUsuario;
     protected double precio;
     protected String tipoHabitacion;
 
-    public ReservacionHotel(String tipo, int numCamas, double precio) {
+    public ReservacionHotel(String tipo, int cantidadDeCamas, double precio) {
         this.tipoHabitacion = tipo;
-        this.numCamas = numCamas;
+        this.cantidadDeCamas = cantidadDeCamas;
         this.precio = precio;
         this.estado = "disponible";
     }
