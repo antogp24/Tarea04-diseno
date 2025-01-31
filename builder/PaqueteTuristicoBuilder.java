@@ -4,15 +4,12 @@ import composite.*;
 
 public class PaqueteTuristicoBuilder implements PaqueteBuilder {
     private PaqueteTuristico paquete;
-    private PaqueteAdicionales adicionales;
 
-    public PaqueteTuristicoBuilder() {
-        this.adicionales = new PaqueteAdicionales();
-    }
+    private PaqueteAdicionales paqueteAdicionales;
 
     public void reset() {
         paquete = new PaqueteTuristico("Nuevo Paquete");
-        adicionales.reset();
+        paqueteAdicionales = new PaqueteAdicionales(); // Nueva instancia de PaqueteAdicionales
     }
 
     public void agregarHotel(ReservacionHotel hotel) {
@@ -23,9 +20,20 @@ public class PaqueteTuristicoBuilder implements PaqueteBuilder {
         paquete.agregarComponente(paseo);
     }
 
+    public void agregarDescuento(double porcentaje) {
+        paqueteAdicionales.agregarDescuento(porcentaje); // Usamos PaqueteAdicionales
+    }
+
+    public void agregarServicioAdicional(ServicioAdicional servicio) {
+        paqueteAdicionales.agregarServicioAdicional(servicio); // Usamos PaqueteAdicionales
+    }
+
     public PaqueteTuristico build() {
+        // Agregamos los adicionales al paquete turístico
+        for (Adicional adicional : paqueteAdicionales.getAdicionales()) {
+            paquete.agregarAdicional(adicional);
+        }
         PaqueteTuristico resultado = paquete;
-        paquete.agregarAdicionales(adicionales.getAdicionales());
         reset();
         return resultado;
     }
@@ -34,16 +42,17 @@ public class PaqueteTuristicoBuilder implements PaqueteBuilder {
         reset();
         agregarHotel(hotel);
         agregarPaseo(paseo);
-        adicionales.agregarDescuento(0.1); // 10% de descuento
+        agregarDescuento(0.1); // 10% de descuento
     }
 
     public void construirPremium(ReservacionHotel hotel, ReservacionPaseo paseo) {
         reset();
         agregarHotel(hotel);
         agregarPaseo(paseo);
-        adicionales.agregarDescuento(0.2); // 20% de descuento
-        adicionales.agregarServicioAdicional(new ServicioAdicional("Traslado", "Premium"));
-        adicionales.agregarServicioAdicional(new ServicioAdicional("Spa", "Premium"));
+        agregarDescuento(0.2); // 20% de descuento
+        agregarServicioAdicional(new ServicioAdicional("Traslado", "Premium"));
+        agregarServicioAdicional(new ServicioAdicional("Spa", "Premium"));
     }
 }
+
 
