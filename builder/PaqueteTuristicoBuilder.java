@@ -31,4 +31,20 @@ public class PaqueteTuristicoBuilder implements PaqueteBuilder {
         reset();
         return resultado;
     }
+    public void construirBasico(ReservacionHotel hotel, ReservacionPaseo paseo) {
+        reset();
+        agregarHotel(hotel);
+        agregarPaseo(paseo);
+        agregarDescuento(0.1); // 10% de descuento
+    }
+
+    
+    public void construirPremium(ReservacionHotel hotel, ReservacionPaseo paseo) {
+        reset();
+        agregarHotel(hotel);
+        agregarPaseo(paseo);
+        agregarDescuento(0.2); // 20% de descuento
+        agregarServicioAdicional(new ServicioAdicional("Traslado", "Premium"));
+        agregarServicioAdicional(new ServicioAdicional("Spa", "Premium"));
+    }   
 } 
